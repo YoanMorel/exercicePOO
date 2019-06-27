@@ -2,17 +2,12 @@
 
 class BankAccount {
 
-
 	private $owner;
-
-
 	private $balance;
-
-
 	private $intrestRates;
-
-
 	private $currency;
+	protected static $objCreated;
+	private const BANK_NAME = 'Oseille Bank - حميض Bank - щавель Bank';
 
 	/**
 	 * Default constructor
@@ -22,6 +17,7 @@ class BankAccount {
 		$this->balance = $newBalance;
 		$this->interestRates = $newInterestRates;
 		$this->currency = $newCurrency;
+		self::$objCreated++;
 	}
 
 	/**
@@ -76,6 +72,14 @@ class BankAccount {
 
 	public function getCurrency() {
 		return $this->currency;
+	}
+
+	public static function getNbObjsCreated() {
+		return self::$objCreated;
+	}
+
+	public function getBankName() {
+		return self::BANK_NAME;
 	}
 
 }

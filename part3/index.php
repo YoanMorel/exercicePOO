@@ -26,6 +26,10 @@
 
     <div class="container">
 
+      <div class="row text-center">
+        <h1><?= BankAccount::getBankName(); ?></h1>
+      </div>
+
 <?php
       $i = 0;
 
@@ -47,6 +51,10 @@
       endforeach;
 
      ?>
+
+     <div class="row text-center">
+       <p>Vous venez de créer <?= BankAccount::getNbObjsCreated(); ?> comptes bancaires.</p>
+     </div>
 
    </div>
 
