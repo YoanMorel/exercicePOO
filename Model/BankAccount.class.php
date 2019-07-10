@@ -2,40 +2,40 @@
 
 class BankAccount {
 
-	private $owner;
-	private $balance;
-	private $intrestRates;
-	private $currency;
-	protected static $objCreated;
-	private const BANK_NAME = 'Oseille Bank - حميض Bank - щавель Bank';
+	private 					$owner;
+	private 					$balance;
+	private 					$interestRates;
+	private 					$currency;
+	protected static 	$objCreated;
+	private const 		BANK_NAME = 'OseilleBank - DoughBank - حميضBank - щавельBank';
 
 	/**
 	 * Default constructor
 	 */
 	public function __construct($newOwner, $newBalance, $newInterestRates, $newCurrency) {
-		$this->owner = $newOwner;
-		$this->balance = $newBalance;
-		$this->interestRates = $newInterestRates;
-		$this->currency = $newCurrency;
+		$this->setOwner($newOwner);
+		$this->setBalance($newBalance);
+		$this->setInterestRates($newInterestRates);
+		$this->setCurrency($newCurrency);
 		self::$objCreated++;
 	}
 
 	/**
-	 * @param $amount
+	 * @param int $amount
 	 */
 	public function credit($amount) {
 		$this->balance += $amount;
 	}
 
 	/**
-	 * @param $amount
+	 * @param int $amount
 	 */
 	public function debit($amount) {
 		$this->balance -= $amount;
 	}
 
 	/**
-		* @param setteurs
+		* @param setters
 		*/
 
 	public function setOwner($newOwner) {

@@ -16,9 +16,11 @@
   <body>
 
     <?php
-      include('../Model/bankAccount.php');
+      spl_autoload_register(function($class) {
+            require '../Model/'.$class.'.class.php';
+          });
 
-      $clients = ["John"=>[1250, 1.3], "Jane"=>[1500, 2.3], "David"=>[12000, 2.3], "Toto"=>[1000, 2.3], "Lala"=>[5000, 2.3]];
+      $clients = ["John"=>[1250, 1.3, 'euros'], "Jane"=>[1500, 2.3, 'euros'], "David"=>[12000, 2.3, 'euros'], "Toto"=>[1000, 2.3, 'euros'], "Lala"=>[5000, 2.3, 'euros']];
 
       $accounts = [];
 
@@ -34,7 +36,7 @@
       $i = 0;
 
       foreach ($clients as $name => $val):
-        $accounts[$i] = new BankAccount($name, $val[0], $val[1], 'euros');
+        $accounts[] = new BankAccount($name, $val[0], $val[1], $val[2]);
 
         ?>
 
@@ -42,7 +44,7 @@
           <ul class="list-unstyled">
             <li>Titulaire : <?= $accounts[$i]->getOwner(); ?></li>
             <li>Solde : <?= $accounts[$i]->getBalance().' '.$accounts[$i]->getCurrency(); ?></li>
-            <li>Taux d'intérêt : <?= $accounts[$i]->getInterestRates(); ?></li>
+            <li>Taux d'intérêt : <?= $accounts[$i]->getInterestRates(); ?> %</li>
           </ul>
         </div>
 
